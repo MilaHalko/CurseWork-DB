@@ -1,0 +1,23 @@
+USE master;
+USE LandCompany;
+GO
+insert into Land (FkOwnerID, FkLocationID, FkUsageTypeID) values (2, 1, 1);
+insert into Land (FkOwnerID, FkLocationID, FkUsageTypeID) values (27, 2, 2);
+insert into Land (FkOwnerID, FkLocationID, FkUsageTypeID) values (34, 3, 3);
+insert into Land (FkOwnerID, FkLocationID, FkUsageTypeID) values (15, 4, 4);
+insert into Land (FkOwnerID, FkLocationID, FkUsageTypeID) values (3, 5, 5);
+insert into Land (FkOwnerID, FkLocationID, FkUsageTypeID) values (45, 6, 6);
+insert into Land (FkOwnerID, FkLocationID, FkUsageTypeID) values (46, 7, 7);
+insert into Land (FkOwnerID, FkLocationID, FkUsageTypeID) values (39, 8, 8);
+insert into Land (FkOwnerID, FkLocationID, FkUsageTypeID) values (3, 9, 9);
+insert into Land (FkOwnerID, FkLocationID, FkUsageTypeID) values (32, 10, 10);
+insert into Land (FkOwnerID, FkLocationID, FkUsageTypeID) values (51, 11, 11);
+insert into Land (FkOwnerID, FkLocationID, FkUsageTypeID) values (44, 12, 12);
+insert into Land (FkOwnerID, FkLocationID, FkUsageTypeID) values (42, 13, 13);
+insert into Land (FkOwnerID, FkLocationID, FkUsageTypeID) values (20, 14, 14);
+insert into Land (FkOwnerID, FkLocationID, FkUsageTypeID) values (31, 15, 15);
+insert into Land (FkOwnerID, FkLocationID, FkUsageTypeID) values (4, 16, 16);
+insert into Land (FkOwnerID, FkLocationID, FkUsageTypeID) values (13, 17, 17);
+insert into Land (FkOwnerID, FkLocationID, FkUsageTypeID) values (13, 18, 18);
+insert into Land (FkOwnerID, FkLocationID, FkUsageTypeID) values (36, 19, 19);
+insert into Land (FkOwnerID, FkLocationID, FkUsageTypeID) values (28, 20, 20);
