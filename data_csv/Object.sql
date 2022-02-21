@@ -36,3 +36,28 @@ insert into Object (FkLandID, FkResourceID, LatitudeLU, LatitudeRL, LongtitudeLU
 insert into Object (FkLandID, FkResourceID, LatitudeLU, LatitudeRL, LongtitudeLU, LongtitudeRL) values (20, 20, 72.14, 80.88, -15.03, -10.54);
 insert into Object (FkLandID, FkResourceID, LatitudeLU, LatitudeRL, LongtitudeLU, LongtitudeRL) values (20, 20, -55.57, -48.65, -71.61, -66.52);
 insert into Object (FkLandID, FkResourceID, LatitudeLU, LatitudeRL, LongtitudeLU, LongtitudeRL) values (20, 20, 66.46, 77.94, -50.95, -43.33);
+go
+
+create proc randResources as
+begin
+	declare @randRes int
+	declare @landID int
+	declare @LatLU real
+	declare cur cursor local
+	for select FkResourceID, FkLandID, LatitudeLU
+	from Object
+
+	open cur
+	fetch next from cur into @randRes, @landID, @LatLU
+	while @@FETCH_STATUS = 0
+	begin
+		set @randRes = (select top 1 id from Resource order by NEWID())
+		update Object set FkResourceID = @randRes where FkLandID = @landID and LatitudeLU = @LatLU
+		fetch next from cur into @randRes, @landID, @LatLU
+	end
+	close cur
+end
+go
+
+exec randResources
+go

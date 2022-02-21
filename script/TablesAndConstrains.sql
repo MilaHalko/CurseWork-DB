@@ -1,11 +1,12 @@
-CREATE DATABASE LandCompany;
-GO
+--CREATE DATABASE LandCompany;
+--GO
 --DROP DATABASE LandCompany
 --GO
 USE master;
 USE LandCompany;
 GO
 
+--------------------------------------------------------------------------
 CREATE TABLE UsageType (
 	ID INT IDENTITY(1,1) PRIMARY KEY,
 	Name VARCHAR(50) NOT NULL,
@@ -17,6 +18,8 @@ ALTER TABLE UsageType
 ADD CONSTRAINT CH_UsageType_Tax CHECK (Tax >= 0)
 GO
 
+
+--------------------------------------------------------------------------
 CREATE TABLE Location (
 	ID INT IDENTITY(1,1) PRIMARY KEY,
 	Address VARCHAR(50) NOT NULL UNIQUE,
@@ -28,6 +31,8 @@ ALTER TABLE Location
 ADD CONSTRAINT CH_Location_Tax CHECK (Tax >= 0)
 GO
 
+
+--------------------------------------------------------------------------
 CREATE TABLE Resource (
 	ID INT IDENTITY(1,1) PRIMARY KEY,
     Name VARCHAR(50) NULL,
@@ -39,6 +44,8 @@ ALTER TABLE Resource
 ADD CONSTRAINT CH_Resource_Tax CHECK (Tax >= 0)
 GO
 
+
+--------------------------------------------------------------------------
 CREATE TABLE Natural (
 	ID INT IDENTITY(1,1) PRIMARY KEY,
     Name VARCHAR(20) NOT NULL,
@@ -72,6 +79,8 @@ ALTER TABLE Natural
 ADD CONSTRAINT CH_DBDate CHECK (DATEDIFF(yy, DBDate, GETDATE()) >= 18)
 GO
 
+
+--------------------------------------------------------------------------
 CREATE TABLE Registrar (
 	ID INT IDENTITY(1,1) PRIMARY KEY,
     Name VARCHAR(20) NOT NULL,
@@ -95,7 +104,8 @@ ADD CONSTRAINT CH_Registrar_Phone
 CHECK (Phone LIKE '___-___-____' AND Phone NOT LIKE '%[a-Z]%')
 GO
 
---DROP TABLE Legal 
+
+--------------------------------------------------------------------------
 CREATE TABLE Legal (
 	ID INT IDENTITY(1,1) PRIMARY KEY,
     Name VARCHAR(50) NOT NULL,
@@ -110,6 +120,8 @@ ON UPDATE CASCADE
 ON DELETE CASCADE
 GO
 
+
+--------------------------------------------------------------------------
 CREATE TABLE Land (
 	ID INT IDENTITY(1,1) PRIMARY KEY,
 	FkOwnerID INT NULL,
@@ -138,12 +150,15 @@ ON UPDATE CASCADE
 ON DELETE SET NULL
 GO
 
+
+--------------------------------------------------------------------------
 CREATE TABLE Utility (
 	FkLandID INT NULL,
 	Plumbing BIT DEFAULT(0) NOT NULL,
 	Sanitation BIT DEFAULT(0) NOT NULL,
 	Heating BIT DEFAULT(0) NOT NULL,
-	Gas BIT DEFAULT(0) NOT NULL
+	Gas BIT DEFAULT(0) NOT NULL,
+	Electricity BIT DEFAULT(0) NOT NULL
 )
 GO
 
@@ -154,7 +169,8 @@ ON UPDATE CASCADE
 ON DELETE SET NULL
 GO
 
---DROP TABLE Object
+
+--------------------------------------------------------------------------
 CREATE TABLE Object (
 	FkLandID INT NOT NULL,
 	FkResourceID INT NULL,
@@ -187,7 +203,8 @@ ALTER TABLE Object
 ADD CONSTRAINT CH_Longtitude CHECK (LongtitudeLU < LongtitudeRL)
 GO
 
---DROP TABLE Act
+
+--------------------------------------------------------------------------
 CREATE TABLE Act (
 	ID INT IDENTITY(1,1) PRIMARY KEY,
 	FkLandID INT NOT NULL,
@@ -231,6 +248,8 @@ ALTER TABLE Act
 ADD CONSTRAINT CH_Act_Date CHECK (Date <= GETDATE())
 GO
 
+
+--------------------------------------------------------------------------
 SELECT * FROM Natural 
 GO
 SELECT * FROM Legal
