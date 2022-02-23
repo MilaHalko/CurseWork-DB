@@ -14,11 +14,6 @@ create table UsageType (
 )
 go
 
-alter table UsageType
-add constraint CH_UsageTypeTax check (Tax >= 0)
-go
-
-
 --------------------------------------------------------------------------
 create table Location (
 	ID int identity(1,1) primary key,
@@ -26,11 +21,6 @@ create table Location (
 	Tax float default(0) not null
 )
 go
-
-alter table Location 
-add constraint CH_LocationTax check (Tax >= 0)
-go
-
 
 --------------------------------------------------------------------------
 create table Natural (
@@ -42,32 +32,6 @@ create table Natural (
 )
 go
 
-
-alter table Natural
-add constraint CH_NaturalName 
-check (Name not like '%[^A-Za-z'' -]%')
-go
-
-alter table Natural
-add constraint CH_NaturalSurname 
-check (Surname not like '%[^A-Za-z'' -]%')
-go
-
-alter table Natural
-add constraint CH_NaturalDBDate 
-check (DBDate like '____-__-__' and DBDate not like '%[a-Z]%')
-go
-
-alter table Natural
-add constraint CH_Natural_Phone 
-check (Phone like '___-___-____' and Phone not like '%[a-Z]%')
-go
-
-alter table Natural
-add constraint CH_DBDate check (DATEDIFF(yy, DBDate, GETDATE()) >= 18)
-go
-
-
 --------------------------------------------------------------------------
 create table Registrar (
 	ID int identity(1,1) primary key,
@@ -76,22 +40,6 @@ create table Registrar (
     Phone varchar(15) not null unique
 )
 go
-
-alter table Registrar
-add constraint CH_RegistrarName 
-check (Name not like '%[^A-Za-z'' -]%')
-go
-
-alter table Registrar
-add constraint CH_RegistrarSurname 
-check (Surname not like '%[^A-Za-z'' -]%')
-go
-
-alter table Registrar
-add constraint CH_RegistrarPhone 
-check (Phone like '___-___-____' and Phone not like '%[a-Z]%')
-go
-
 
 --------------------------------------------------------------------------
 create table Utility (
@@ -104,7 +52,6 @@ create table Utility (
 )
 go
 
-
 --------------------------------------------------------------------------
 create table Legal (
 	ID int identity(1,1) primary key,
@@ -114,7 +61,6 @@ create table Legal (
 	on delete cascade
 )
 go
-
 
 --------------------------------------------------------------------------
 create table Land (
@@ -142,7 +88,6 @@ create table Land (
 )
 go
 
-
 --------------------------------------------------------------------------
 create table Object (
 	ID int identity(1,1) primary key,
@@ -158,15 +103,6 @@ create table Object (
 	LongtitudeU float not null
 )
 go
-
-alter table Object
-add constraint CH_Latitude check (LatitudeL < LatitudeR)
-go
-
-alter table Object
-add constraint CH_Longtitude check (LongtitudeD < LongtitudeU)
-go
-
 
 --------------------------------------------------------------------------
 create table Act (
@@ -191,15 +127,6 @@ create table Act (
 )
 go
 
-alter table Act
-add constraint CH_ActNaturals check (FkBuyerID != FkSellerID)
-go
-
-alter table Act
-add constraint CH_ActDate check (Date <= GETDATE())
-go
-
-
 --------------------------------------------------------------------------
 create table Resource (
 	ID int identity(1,1) primary key,
@@ -214,32 +141,27 @@ create table Resource (
 )
 go
 
-alter table Resource
-add constraint CH_ResourceTax check (Tax >= 0)
-go
-
-
 --------------------------------------------------------------------------
 SELECT * FROM UsageType
 go
-SELECT * FROM Natural 
+SELECT * FROM Location
 go
-SELECT * FROM Legal
+SELECT * FROM Natural 
 go
 SELECT * FROM Registrar
 go
-SELECT * FROM Location
+SELECT * FROM Utility
 go
-SELECT * FROM Resource
+SELECT * FROM Legal
 go
 SELECT * FROM Land
 go
 SELECT * FROM Object
 go
-SELECT * FROM Utility
-go
 SELECT * FROM Act
 go
+SELECT * FROM Resource
+go
 
-dbcc checkident('', reseed, 0)
+dbcc checkident('Land', reseed, 0)
 go

@@ -1,63 +1,104 @@
-insert into Object (FkLandID, FkResourceID, LatitudeLU, LatitudeRL, LongtitudeLU, LongtitudeRL) values (1, 1, -47.1, -43.92, -15.33, -13.71);
-insert into Object (FkLandID, FkResourceID, LatitudeLU, LatitudeRL, LongtitudeLU, LongtitudeRL) values (1, 1, 8.49, 15.84, -29.06, -20.97);
-insert into Object (FkLandID, FkResourceID, LatitudeLU, LatitudeRL, LongtitudeLU, LongtitudeRL) values (2, 2, 42.13, 42.34, -80.23, -76.46);
-insert into Object (FkLandID, FkResourceID, LatitudeLU, LatitudeRL, LongtitudeLU, LongtitudeRL) values (2, 2, -88.54, -80.69, 8.94, 11.84);
-insert into Object (FkLandID, FkResourceID, LatitudeLU, LatitudeRL, LongtitudeLU, LongtitudeRL) values (3, 3, -41.46, -39.99, -7.26, -3.55);
-insert into Object (FkLandID, FkResourceID, LatitudeLU, LatitudeRL, LongtitudeLU, LongtitudeRL) values (3, 3, -33.21, -20.28, 17.91, 24.15);
-insert into Object (FkLandID, FkResourceID, LatitudeLU, LatitudeRL, LongtitudeLU, LongtitudeRL) values (4, 4, -19.43, -18.99, 53.11, 60.8);
-insert into Object (FkLandID, FkResourceID, LatitudeLU, LatitudeRL, LongtitudeLU, LongtitudeRL) values (4, 4, -27.8, -20.68, 80.5, 84.01);
-insert into Object (FkLandID, FkResourceID, LatitudeLU, LatitudeRL, LongtitudeLU, LongtitudeRL) values (5, 5, -49.53, -44.75, -20.44, -9.65);
-insert into Object (FkLandID, FkResourceID, LatitudeLU, LatitudeRL, LongtitudeLU, LongtitudeRL) values (5, 5, -50.21, -42.77, 39.39, 44.17);
-insert into Object (FkLandID, FkResourceID, LatitudeLU, LatitudeRL, LongtitudeLU, LongtitudeRL) values (6, 6, 28.09, 35.41, -50.76, -43.99);
-insert into Object (FkLandID, FkResourceID, LatitudeLU, LatitudeRL, LongtitudeLU, LongtitudeRL) values (6, 6, -56.91, 46.14, -61.09, -54.68);
-insert into Object (FkLandID, FkResourceID, LatitudeLU, LatitudeRL, LongtitudeLU, LongtitudeRL) values (7, 7, 34.9, 37.8, -20.33, -14.42);
-insert into Object (FkLandID, FkResourceID, LatitudeLU, LatitudeRL, LongtitudeLU, LongtitudeRL) values (7, 7, 33.5, 41.81, 37.45, 48.14);
-insert into Object (FkLandID, FkResourceID, LatitudeLU, LatitudeRL, LongtitudeLU, LongtitudeRL) values (8, 8, -71.69, -69.57, 52.67, 62.11);
-insert into Object (FkLandID, FkResourceID, LatitudeLU, LatitudeRL, LongtitudeLU, LongtitudeRL) values (8, 8, -40.22, -39.34, 63.57, 73.28);
-insert into Object (FkLandID, FkResourceID, LatitudeLU, LatitudeRL, LongtitudeLU, LongtitudeRL) values (9, 9, -58.76, -47.95, -81.52, -78.13);
-insert into Object (FkLandID, FkResourceID, LatitudeLU, LatitudeRL, LongtitudeLU, LongtitudeRL) values (9, 9, 81.26, 82.75, 71.0, 86.67);
-insert into Object (FkLandID, FkResourceID, LatitudeLU, LatitudeRL, LongtitudeLU, LongtitudeRL) values (10, 10, 43.42, 50.09, -22.79, -20.21);
-insert into Object (FkLandID, FkResourceID, LatitudeLU, LatitudeRL, LongtitudeLU, LongtitudeRL) values (10, 10, -34.11, -33.98, 5.28, 8.3);
-insert into Object (FkLandID, FkResourceID, LatitudeLU, LatitudeRL, LongtitudeLU, LongtitudeRL) values (11, 11, -52.33, -46.31, 86.27, 89.6);
-insert into Object (FkLandID, FkResourceID, LatitudeLU, LatitudeRL, LongtitudeLU, LongtitudeRL) values (11, 11, -0.6, 8.12, 83.74, 89.23);
-insert into Object (FkLandID, FkResourceID, LatitudeLU, LatitudeRL, LongtitudeLU, LongtitudeRL) values (12, 12, -35.66, -28.24, -59.04, -57.66);
-insert into Object (FkLandID, FkResourceID, LatitudeLU, LatitudeRL, LongtitudeLU, LongtitudeRL) values (12, 12, 15.48, 20.59, 84.75, 85.66);
-insert into Object (FkLandID, FkResourceID, LatitudeLU, LatitudeRL, LongtitudeLU, LongtitudeRL) values (13, 13, -9.44, -8.32, 39.77, 44.43);
-insert into Object (FkLandID, FkResourceID, LatitudeLU, LatitudeRL, LongtitudeLU, LongtitudeRL) values (13, 13, -3.51, -2.23, 38.02, 41.09);
-insert into Object (FkLandID, FkResourceID, LatitudeLU, LatitudeRL, LongtitudeLU, LongtitudeRL) values (13, 13, 20.31, 24.18, -64.87, -61.33);
-insert into Object (FkLandID, FkResourceID, LatitudeLU, LatitudeRL, LongtitudeLU, LongtitudeRL) values (13, 13, 50.36, 57.48, -27.92, -22.37);
-insert into Object (FkLandID, FkResourceID, LatitudeLU, LatitudeRL, LongtitudeLU, LongtitudeRL) values (15, 15, -3.08, 2.01, 26.95, 32.77);
-insert into Object (FkLandID, FkResourceID, LatitudeLU, LatitudeRL, LongtitudeLU, LongtitudeRL) values (15, 15, 54.65, 60.57, 50.62, 57.3);
-insert into Object (FkLandID, FkResourceID, LatitudeLU, LatitudeRL, LongtitudeLU, LongtitudeRL) values (16, 16, -33.11, -30.78, 34.82, 35.23);
-insert into Object (FkLandID, FkResourceID, LatitudeLU, LatitudeRL, LongtitudeLU, LongtitudeRL) values (16, 16, -76.79, -72.78, -8.69, -5.29);
-insert into Object (FkLandID, FkResourceID, LatitudeLU, LatitudeRL, LongtitudeLU, LongtitudeRL) values (17, 17, 20.69, 29.06, -17.89, -17.01);
-insert into Object (FkLandID, FkResourceID, LatitudeLU, LatitudeRL, LongtitudeLU, LongtitudeRL) values (17, 17, -10.89, -1.38, -80.15, -78.42);
-insert into Object (FkLandID, FkResourceID, LatitudeLU, LatitudeRL, LongtitudeLU, LongtitudeRL) values (20, 20, -46.62, -42.1, -88.54, -86.05);
-insert into Object (FkLandID, FkResourceID, LatitudeLU, LatitudeRL, LongtitudeLU, LongtitudeRL) values (20, 20, 72.14, 80.88, -15.03, -10.54);
-insert into Object (FkLandID, FkResourceID, LatitudeLU, LatitudeRL, LongtitudeLU, LongtitudeRL) values (20, 20, -55.57, -48.65, -71.61, -66.52);
-insert into Object (FkLandID, FkResourceID, LatitudeLU, LatitudeRL, LongtitudeLU, LongtitudeRL) values (20, 20, 66.46, 77.94, -50.95, -43.33);
+use master
+use LandCompany
 go
 
-create proc randResources as
-begin
-	declare @randRes int
-	declare @landID int
-	declare @LatLU real
-	declare cur cursor local
-	for select FkResourceID, FkLandID, LatitudeLU
-	from Object
-
-	open cur
-	fetch next from cur into @randRes, @landID, @LatLU
-	while @@FETCH_STATUS = 0
-	begin
-		set @randRes = (select top 1 id from Resource order by NEWID())
-		update Object set FkResourceID = @randRes where FkLandID = @landID and LatitudeLU = @LatLU
-		fetch next from cur into @randRes, @landID, @LatLU
-	end
-	close cur
-end
-go
-
-exec randResources
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (10, 136.7544, 139.7544, -69.2539, -66.2539);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (9, 131.8584, 136.8584, 70.8674, 73.8674);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (4, -1.0575, 5.9425, 6.0611, 9.0611);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (17, -32.4758, -29.4758, -14.0201, -12.0201);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (21, 87.5495, 90.5495, 96.6337, 97.6337);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (20, 84.9725, 90.9725, -9.3119, -5.3119);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (17, -48.425, -42.425, -132.9768, -129.9768);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (2, 85.6346, 87.6346, -61.0055, -59.0055);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (13, -158.4675, -152.4675, 157.9237, 161.9237);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (13, -41.0103, -37.0103, -88.4022, -85.4022);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (7, -150.3463, -148.3463, -60.7011, -57.7011);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (14, -112.3434, -111.3434, -53.9562, -49.9562);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (13, -142.8865, -137.8865, 4.2964, 7.2964);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (2, -174.9591, -168.9591, -47.2564, -40.2564);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (24, -124.377, -117.377, -73.8873, -73.6);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (9, -94.4455, -91.4455, -38.0531, -32.0531);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (10, 151.3683, 154.3683, 75.6106, 79.6106);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (7, -17.827, -17, -102.0231, -100);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (15, -99.1348, -98.1348, -60.745, -53.745);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (25, 17.2868, 22.2868, 37.9209, 38);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (24, 50.3719, 53, -33.6851, -32.6851);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (3, 56.3075, 62.3075, -47.9474, -46.9474);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (22, -103.3296, -96.3296, -168.1447, -164.1447);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (8, 38.6765, 41.6765, -125.943, -123.943);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (20, -7.9364, -4.9364, 126.757, 130.757);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (15, -121.9146, -115.9146, -108.56, -102.56);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (23, 108.4517, 111.4517, 97.1735, 101.1735);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (22, -4.7641, -2.7641, -100.3725, -98.3725);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (21, 87.9562, 90.9562, 128.0873, 132.0873);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (19, -173.798, -168.798, -67.486, -65.486);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (21, 27.529, 28.529, -85.4107, -80.4107);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (16, 64.6515, 71.6515, -76.695, -73.695);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (4, 111.4718, 115.4718, 118.2101, 122.2101);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (5, 113.9488, 119.9488, -138.0659, -133.0659);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (16, -87.777, -81.777, -171.4177, -165.4177);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (25, -3.2346, 0.7654, -157.4251, -150.4251);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (23, 158.1634, 159.1634, 13.507, 14.507);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (22, 164.449, 170.449, -83.1315, -77.1315);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (18, -74.8988, -67.8988, 127.4806, 128.4806);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (9, 35.8911, 36.8911, -32.4897, -31.4897);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (8, -158.8718, -157.8718, 79.3822, 80.3822);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (6, -92.4913, -92.4, 28.495, 33.495);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (17, -91.6712, -88.6712, 87.6629, 89.6629);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (23, 48.72, 53.72, -175.5393, -173.5393);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (8, 126.8729, 133.8729, 86.7638, 88.7638);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (3, -100.1916, -95.1916, 57.3448, 60);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (2, 89.068, 96.068, -78.6604, -75);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (10, -58.9447, -52.9447, -57.7527, -53);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (13, -102.9015, -97.9015, 7.58, 8.58);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (3, -39.5863, -33.5863, 46.8526, 53.8526);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (2, 94.8979, 97, 38.7447, 39.7447);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (2, 47.7825, 49.7825, 126.7793, 132.7793);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (24, -84.8665, -81.8665, -131.3055, -126.3055);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (17, 141.355, 145.355, 160.2363, 161.2363);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (17, -47.4682, -43.4682, -60.012, -56);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (25, 150.8181, 157.8181, -143.9882, -137.9882);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (10, 23.506, 29.506, 26.9828, 31.9828);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (17, -43.5842, -36.5842, -147.1794, -144.1794);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (10, 62.7488, 69.7488, -100.3992, -97.3992);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (22, 89.239, 92.239, -159.2271, -155.2271);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (4, 66.6239, 67.6239, 53.3058, 59.3058);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (24, 55.233, 58, 26.2292, 31.2292);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (3, 123.0185, 129.0185, -163.9049, -160.9049);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (5, 20.458, 24.458, 154.8019, 161.8019);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (10, 162.5015, 164.5015, -94.2889, -92.2889);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (8, 49.8011, 54.8011, -160.9866, -159.9866);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (19, 153.3156, 154.3156, -55.0912, -51.0912);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (16, 137.6136, 143.6136, 132.3752, 137.3752);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (25, -118.9068, -113.9068, 155.6179, 159);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (24, -40.9923, -37.9923, -16.3304, -11.3304);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (15, 138.1654, 139.1654, 75.4798, 77.4798);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (4, 13.2175, 16.2175, -136.3545, -132.3545);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (20, -163.7796, -159, -160.2176, -154.2176);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (9, -23.6218, -18.6218, -121.7924, -120.7924);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (17, -57.6318, -53.6318, 174.8986, 180.8986);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (25, 131.0872, 137.0872, 158.9867, 164.9867);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (7, -126.6387, -120, 5.4691, 6.4691);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (6, 45.8197, 46.8197, 123.578, 129.578);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (19, 132.5942, 134.5942, 168.5503, 173.5503);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (13, -111.2817, -110.2817, -78.0882, -73.0882);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (21, 103.4516, 110.4516, -150.1158, -148.1158);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (20, -153.6912, -148.6912, -144.1694, -138.1694);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (10, 48.0556, 51.0556, 111.5043, 117.5043);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (16, 133.7468, 134.7468, 48.4222, 50.4222);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (5, 112.3469, 113.3469, -33.961, -32.961);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (13, -94.0159, -94, 70.0096, 75);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (20, 31.0623, 34.0623, -40.796, -36.796);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (21, 136.927, 141.927, -145.9398, -138.9398);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (6, 9.1392, 12.1392, -12.7603, -9.7603);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (6, -18.3001, -16.3001, -138.1149, -133.1149);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (5, 45.0657, 52.0657, -127.1211, -125.1211);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (6, 88.2817, 94.2817, -29.4617, -24.4617);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (11, -163.5538, -160.5538, -5.947, -3.947);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (24, 49.3386, 56.3386, -120.9692, -117.9692);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (12, -118.2962, -117.2962, 96.7541, 102.7541);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (23, 90.3161, 95.3161, -130.5746, -126.5746);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (1, 63.8979, 67.8979, 171.6049, 176.6049);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (18, 111.5775, 113.5775, 82.7477, 88.7477);
+insert into Object (FkLandID, LatitudeL, LatitudeR, LongtitudeD, LongtitudeU) values (17, -33.6808, -28.6808, -86.3629, -83.3629);
 go
