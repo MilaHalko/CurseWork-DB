@@ -1,272 +1,242 @@
---CREATE DATABASE LandCompany;
---GO
+CREATE DATABASE LandCompany;
+--go
 --DROP DATABASE LandCompany
---GO
+--go
 USE master;
 USE LandCompany;
-GO
+go
 
 --------------------------------------------------------------------------
-CREATE TABLE UsageType (
-	ID INT IDENTITY(1,1) PRIMARY KEY,
-	Name VARCHAR(50) NOT NULL,
-	Tax REAL DEFAULT(0) NOT NULL
+create table UsageType (
+	ID int identity(1,1) primary key,
+	Name varchar(50) not null,
+	Tax float default(0) not null
 )
-GO
+go
 
-ALTER TABLE UsageType
-ADD CONSTRAINT CH_UsageType_Tax CHECK (Tax >= 0)
-GO
-
-
---------------------------------------------------------------------------
-CREATE TABLE Location (
-	ID INT IDENTITY(1,1) PRIMARY KEY,
-	Address VARCHAR(50) NOT NULL UNIQUE,
-	Tax REAL DEFAULT(0) NOT NULL
-)
-GO
-
-ALTER TABLE Location
-ADD CONSTRAINT CH_Location_Tax CHECK (Tax >= 0)
-GO
+alter table UsageType
+add constraint CH_UsageTypeTax check (Tax >= 0)
+go
 
 
 --------------------------------------------------------------------------
-CREATE TABLE Resource (
-	ID INT IDENTITY(1,1) PRIMARY KEY,
-    Name VARCHAR(50) NULL,
-	Tax REAL DEFAULT(0) NOT NULL
+create table Location (
+	ID int identity(1,1) primary key,
+	Address varchar(50) not null unique,
+	Tax float default(0) not null
 )
-GO
+go
 
-ALTER TABLE Resource
-ADD CONSTRAINT CH_Resource_Tax CHECK (Tax >= 0)
-GO
+alter table Location 
+add constraint CH_LocationTax check (Tax >= 0)
+go
 
 
 --------------------------------------------------------------------------
-CREATE TABLE Natural (
-	ID INT IDENTITY(1,1) PRIMARY KEY,
-    Name VARCHAR(20) NOT NULL,
-	Surname VARCHAR(20) NOT NULL,
-    DBDate DATE NOT NULL,
-	Phone VARCHAR(15) NOT NULL UNIQUE
+create table Natural (
+	ID int identity(1,1) primary key,
+	Name varchar(20) not null,
+	Surname varchar(20) not null,
+	DBDate date not null,
+	Phone varchar(15) not null unique
 )
-GO
+go
 
-ALTER TABLE Natural
-ADD CONSTRAINT CH_Natural_Name 
-CHECK (Name NOT LIKE '%[^A-Za-z'' -]%')
-GO
 
-ALTER TABLE Natural
-ADD CONSTRAINT CH_Natural_Surname 
-CHECK (Surname NOT LIKE '%[^A-Za-z'' -]%')
-GO
+alter table Natural
+add constraint CH_NaturalName 
+check (Name not like '%[^A-Za-z'' -]%')
+go
 
-ALTER TABLE Natural
-ADD CONSTRAINT CH_Natural_DBDate 
-CHECK (DBDate LIKE '____-__-__' AND DBDate NOT LIKE '%[a-Z]%')
-GO
+alter table Natural
+add constraint CH_NaturalSurname 
+check (Surname not like '%[^A-Za-z'' -]%')
+go
 
-ALTER TABLE Natural
-ADD CONSTRAINT CH_Natural_Phone 
-CHECK (Phone LIKE '___-___-____' AND Phone NOT LIKE '%[a-Z]%')
-GO
+alter table Natural
+add constraint CH_NaturalDBDate 
+check (DBDate like '____-__-__' and DBDate not like '%[a-Z]%')
+go
 
-ALTER TABLE Natural
-ADD CONSTRAINT CH_DBDate CHECK (DATEDIFF(yy, DBDate, GETDATE()) >= 18)
-GO
+alter table Natural
+add constraint CH_Natural_Phone 
+check (Phone like '___-___-____' and Phone not like '%[a-Z]%')
+go
+
+alter table Natural
+add constraint CH_DBDate check (DATEDIFF(yy, DBDate, GETDATE()) >= 18)
+go
 
 
 --------------------------------------------------------------------------
-CREATE TABLE Registrar (
-	ID INT IDENTITY(1,1) PRIMARY KEY,
-    Name VARCHAR(20) NOT NULL,
-	Surname VARCHAR(20) NOT NULL,
-    Phone VARCHAR(15) NOT NULL UNIQUE
+create table Registrar (
+	ID int identity(1,1) primary key,
+    Name varchar(20) not null,
+	Surname varchar(20) not null,
+    Phone varchar(15) not null unique
 )
-GO
+go
 
-ALTER TABLE Registrar
-ADD CONSTRAINT CH_Registrar_Name 
-CHECK (Name NOT LIKE '%[^A-Za-z'' -]%')
-GO
+alter table Registrar
+add constraint CH_RegistrarName 
+check (Name not like '%[^A-Za-z'' -]%')
+go
 
-ALTER TABLE Registrar
-ADD CONSTRAINT CH_Registrar_Surname 
-CHECK (Surname NOT LIKE '%[^A-Za-z'' -]%')
-GO
+alter table Registrar
+add constraint CH_RegistrarSurname 
+check (Surname not like '%[^A-Za-z'' -]%')
+go
 
-ALTER TABLE Registrar
-ADD CONSTRAINT CH_Registrar_Phone 
-CHECK (Phone LIKE '___-___-____' AND Phone NOT LIKE '%[a-Z]%')
-GO
+alter table Registrar
+add constraint CH_RegistrarPhone 
+check (Phone like '___-___-____' and Phone not like '%[a-Z]%')
+go
 
 
 --------------------------------------------------------------------------
-CREATE TABLE Legal (
-	ID INT IDENTITY(1,1) PRIMARY KEY,
-    Name VARCHAR(50) NOT NULL,
-	FkNaturalID INT NOT NULL
+create table Utility (
+	ID int identity(1,1) primary key,
+	Plumbing bit default(0) not null,
+	Sanitation bit default(0) not null,
+	Heating bit default(0) not null,
+	Gas bit default(0) not null,
+	Electricity bit default(0) not null
 )
-GO
-
-ALTER TABLE Legal
-WITH CHECK ADD CONSTRAINT FK_Natural_ID FOREIGN KEY(FkNaturalID)
-REFERENCES Natural(ID)
-ON UPDATE CASCADE 
-ON DELETE CASCADE
-GO
+go
 
 
 --------------------------------------------------------------------------
-CREATE TABLE Land (
-	ID INT IDENTITY(1,1) PRIMARY KEY,
-	FkOwnerID INT NULL,
-	FkLocationID INT NOT NULL,
-	FkUsageTypeID INt NULL
+create table Legal (
+	ID int identity(1,1) primary key,
+    Name varchar(50) not null,
+	FkNaturalID int not null foreign key references Natural(ID)
+	on update cascade
+	on delete cascade
 )
-GO
-
-ALTER TABLE Land
-WITH CHECK ADD CONSTRAINT FK_Owner_ID FOREIGN KEY(FkOwnerID)
-REFERENCES Natural(ID)
-ON UPDATE CASCADE
-GO
-
-ALTER TABLE Land
-WITH CHECK ADD CONSTRAINT FK_Location_ID FOREIGN KEY(FkLocationID)
-REFERENCES Location(ID)
-ON UPDATE CASCADE 
-ON DELETE CASCADE
-GO
-
-ALTER TABLE Land
-WITH CHECK ADD CONSTRAINT FK_UsageType_ID FOREIGN KEY(FkUsageTypeID)
-REFERENCES UsageType(ID)
-ON UPDATE CASCADE 
-ON DELETE SET NULL
-GO
+go
 
 
 --------------------------------------------------------------------------
-CREATE TABLE Utility (
-	FkLandID INT NULL,
-	Plumbing BIT DEFAULT(0) NOT NULL,
-	Sanitation BIT DEFAULT(0) NOT NULL,
-	Heating BIT DEFAULT(0) NOT NULL,
-	Gas BIT DEFAULT(0) NOT NULL,
-	Electricity BIT DEFAULT(0) NOT NULL
-)
-GO
+create table Land (
+	ID int identity(1,1) primary key,
 
-ALTER TABLE Utility
-WITH CHECK ADD CONSTRAINT FK_Land_ID FOREIGN KEY(FkLandID)
-REFERENCES Land(ID)
-ON UPDATE CASCADE 
-ON DELETE SET NULL
-GO
+	FkOwnerID int not null foreign key
+	references Natural(ID)
+	on update cascade
+	on delete cascade,
+
+	FkLocationID int not null unique foreign key 
+	references Location(ID)
+	on update cascade
+	on delete cascade,
+
+	FkUsageTypeID int unique foreign key
+	references UsageType(ID)
+	on update cascade
+	on delete set null,
+
+	FkUtilityID int null unique foreign key
+	references Utility(ID)
+	on update cascade
+	on delete set null
+)
+go
 
 
 --------------------------------------------------------------------------
-CREATE TABLE Object (
-	FkLandID INT NOT NULL,
-	FkResourceID INT NULL,
-	LatitudeLU REAL NOT NULL,
-	LatitudeRL REAL NOT NULL,
-	LongtitudeLU REAL NOT NULL,
-	LongtitudeRL REAL NOT NULL
+create table Object (
+	ID int identity(1,1) primary key,
+
+	FkLandID int not null foreign key
+	references Land(ID)
+	on update cascade
+	on delete cascade,
+
+	LatitudeL float not null,
+	LatitudeR float not null,
+	LongtitudeD float not null,
+	LongtitudeU float not null
 )
-GO
+go
 
-ALTER TABLE Object
-WITH CHECK ADD CONSTRAINT FK_Object_Land_ID FOREIGN KEY(FkLandID)
-REFERENCES Land(ID)
-ON UPDATE CASCADE 
-ON DELETE CASCADE
-GO
+alter table Object
+add constraint CH_Latitude check (LatitudeL < LatitudeR)
+go
 
-ALTER TABLE Object
-WITH CHECK ADD CONSTRAINT FK_Resource_ID FOREIGN KEY(FkResourceID)
-REFERENCES Resource(ID)
-ON UPDATE CASCADE 
-ON DELETE SET NULL
-GO
-
-ALTER TABLE Object
-ADD CONSTRAINT CH_Latitude CHECK (LatitudeLU < LatitudeRL)
-GO
-
-ALTER TABLE Object
-ADD CONSTRAINT CH_Longtitude CHECK (LongtitudeLU < LongtitudeRL)
-GO
+alter table Object
+add constraint CH_Longtitude check (LongtitudeD < LongtitudeU)
+go
 
 
 --------------------------------------------------------------------------
-CREATE TABLE Act (
-	ID INT IDENTITY(1,1) PRIMARY KEY,
-	FkLandID INT NOT NULL,
-	FkBuyerID INT NOT NULL,
-	FkSellerID INT NOT NULL,
-	FkRegistrarID INT NOT NULL,
-	Date DATE NOT NULL
+create table Act (
+	ID int identity(1,1) primary key,
+
+	FkLandID int foreign key
+	references Land(ID)
+	on update cascade
+	on delete set null,
+
+	FkBuyerID int not null foreign key
+	references Natural(ID),
+
+	FkSellerID int not null foreign key
+	references Natural(ID),
+
+	FkRegistrarID int not null foreign key
+	references Registrar(ID)
+	on update cascade,
+
+	Date date default(getdate()) not null
 )
-GO
+go
 
-ALTER TABLE Act
-WITH CHECK ADD CONSTRAINT FK_Act_Land_ID FOREIGN KEY(FkLandID)
-REFERENCES Land(ID)
-ON UPDATE CASCADE
-GO
+alter table Act
+add constraint CH_ActNaturals check (FkBuyerID != FkSellerID)
+go
 
-ALTER TABLE Act
-WITH CHECK ADD CONSTRAINT FK_Buyer_ID FOREIGN KEY(FkBuyerID)
-REFERENCES Natural(ID)
-ON DELETE NO ACTION
-GO
+alter table Act
+add constraint CH_ActDate check (Date <= GETDATE())
+go
 
-ALTER TABLE Act
-WITH CHECK ADD CONSTRAINT FK_Seller_ID FOREIGN KEY(FkSellerID)
-REFERENCES Natural(ID)
-ON DELETE NO ACTION
-GO
 
-ALTER TABLE Act
-WITH CHECK ADD CONSTRAINT FK_Registrar_ID FOREIGN KEY(FkRegistrarID)
-REFERENCES Registrar(ID)
-ON UPDATE CASCADE
-ON DELETE NO ACTION
-GO
+--------------------------------------------------------------------------
+create table Resource (
+	ID int identity(1,1) primary key,
 
-ALTER TABLE Act
-ADD CONSTRAINT CH_Buyer CHECK (FkBuyerID != FkSellerID)
-GO
+	FkObjectID int not null foreign key
+	references Object(ID)
+	on update cascade
+	on delete cascade,
 
-ALTER TABLE Act
-ADD CONSTRAINT CH_Act_Date CHECK (Date <= GETDATE())
-GO
+    Name varchar(50) not null,
+	Tax float DEFAULT(0) not null
+)
+go
+
+alter table Resource
+add constraint CH_ResourceTax check (Tax >= 0)
+go
 
 
 --------------------------------------------------------------------------
 SELECT * FROM Natural 
-GO
+go
 SELECT * FROM Legal
-GO
+go
 SELECT * FROM Registrar
-GO
+go
 SELECT * FROM UsageType
-GO
+go
 SELECT * FROM Location
-GO
+go
 SELECT * FROM Resource
-GO
+go
 SELECT * FROM Land
-GO
+go
 SELECT * FROM Object
-GO
+go
 SELECT * FROM Utility
-GO
+go
 SELECT * FROM Act
-GO
+go
