@@ -220,13 +220,13 @@ go
 
 
 --------------------------------------------------------------------------
+SELECT * FROM UsageType
+go
 SELECT * FROM Natural 
 go
 SELECT * FROM Legal
 go
 SELECT * FROM Registrar
-go
-SELECT * FROM UsageType
 go
 SELECT * FROM Location
 go
@@ -239,4 +239,7 @@ go
 SELECT * FROM Utility
 go
 SELECT * FROM Act
+go
+
+dbcc checkident('', reseed, 0)
 go
