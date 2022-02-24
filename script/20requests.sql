@@ -28,14 +28,15 @@ go
 --(2) Відображення загальної площі усіх ділянок, що є у базі
 create view totalArea as
 select (select count(*) from Land) as TotalLandsQuantity, 
-	   (select sum((o.LatitudeRL - o.LatitudeLU)*(o.LongtitudeRL - o.LongtitudeLU)) from Object o) as TotalArea
+	   (select sum((o.LatitudeR - o.LatitudeL)*(o.LongtitudeU - o.LongtitudeD)) 
+	    from Object o) as TotalArea
 go
 
 select * from totalArea
 go
 
---All areas
-select *, (o.LatitudeRL - o.LatitudeLU)*(o.LongtitudeRL - o.LongtitudeLU) as TotalArea
+--CHECK
+select *, (o.LatitudeR - o.LatitudeL)*(o.LongtitudeU - o.LongtitudeD) as TotalArea
 from Object o
 order by fklandid
 go
@@ -55,10 +56,11 @@ go
 select * from LegalLands
 go
 
---All natural + Legal company
+--CHECK
 select n.ID, n.Surname + ' ' + n.Name as Natural, l.ID as LegalID, l.Name as LegalName
 from Legal l
 right join Natural n on n.ID = l.FkNaturalID
+select * from Act
 go
 
 
@@ -73,7 +75,14 @@ where n.ID not in (select FkNaturalID from Legal)
 go
 
 select * from NaturalLands
-order by NaturalID
+order by LandID
+go
+
+--CHECK
+select n.ID, n.Surname + ' ' + n.Name as Natural, l.ID as LegalID, l.Name as LegalName
+from Legal l
+right join Natural n on n.ID = l.FkNaturalID
+select * from Act
 go
 
 
@@ -88,31 +97,27 @@ join Act a on a.FkBuyerID = n.ID
 go
 
 select * from LegalBuyers
-order by BuyerID
+order by ActID
 go
 
---All Buyers
-select 
-n.ID as BuyerID, n.Surname + ' ' + n.Name as Buyer, a.id as ActID, l.ID as LegalID, l.Name as LegalName
-from Natural n
-full join Legal l on n.ID = l.FkNaturalID
-full join Act a on a.FkBuyerID = n.ID
-order by BuyerID
+--CHECK
+select * from Act
+select * from Natural n left join Legal l on l.FkNaturalID = n.ID 
 go
 
 
 --------------------------------------------------------------------------
 --(6) Відображення актів, де продавець був фізична особа
-create view NaturalBuyer as
+create view NaturalSeller as
 select 
-n.ID as BuyerID, n.Surname + ' ' + n.Name as Buyer, a.id as ActID
+n.ID as SellerID, n.Surname + ' ' + n.Name as Buyer, a.id as ActID
 from Natural n
-join Act a on a.FkBuyerID = n.ID
+join Act a on a.FkSellerID = n.ID
 where n.ID not in (select FkNaturalID from Legal)
 go
 
-select * from NaturalBuyer
-order by BuyerID
+select * from NaturalSeller
+order by Buyer
 go
 
 
@@ -137,9 +142,9 @@ create proc ResourcesbyOwnerID @ownerID int
 as begin
 select distinct r.Name as Resources
 from Resource r
-where r.ID in(select o.FkResourceID from Object o
-			  where o.FkLandID in(select l.id from Land l
-								  where l.FkOwnerID = @ownerID))
+where r.FkObjectID in (select ID from Object o
+					   where o.FkLandID in (select ID from Land l
+											where l.FkOwnerID = @ownerID))
 order by r.Name
 end
 go
@@ -147,14 +152,10 @@ go
 exec ResourcesbyOwnerID 3
 go
 
---All Naturals and their resources
-select n.id, o.FkLandID, r.ID as ResID, r.Name
-from Land l
-join Natural n on l.FkOwnerID = n.ID
-join Object o on o.FkLandID = l.id
-join Resource r on r.ID = o.FkResourceID
---where n.ID = 3
-order by n.ID
+--CHECK
+select * from Resource order by Name
+select * from Object order by ID
+select * from Land order by ID
 go
 
 
@@ -163,17 +164,17 @@ go
 select la.id, lo.Address
 from Land la
 join Location lo on lo.ID = la.FkLocationID
-join Utility u on FkLandID = la.id
-where Plumbing = 0 and Sanitation = 0 and Heating = 0 and Gas = 0
+join Utility u on u.ID = la.FkUtilityID
+where Plumbing = 0 and Sanitation = 0 and Heating = 0 and Gas = 0 and Electricity = 0
 go
 
 
 --------------------------------------------------------------------------
 --(10) Відображання осіб з найбільшою площею ділянки
-alter proc TopOwnersByArea @topNumber int as
-begin
-	declare @table table(ID int, name varchar(50), area real)
-	declare @id int, @name varchar(50), @surname varchar(50), @area real
+create proc TopOwnersByArea @topNumber int 
+as begin
+	declare @table table(ID int, name varchar(50), area float)
+	declare @id int, @name varchar(50), @surname varchar(50), @area float
 	declare cur cursor local
 	for select ID, Name, Surname from Natural
 
@@ -182,7 +183,7 @@ begin
 
 	while @@FETCH_STATUS = 0
 	begin
-		set @area = (select sum((o.LatitudeRL - o.LatitudeLU)*(o.LongtitudeRL - o.LongtitudeLU)) from Object o
+		set @area = (select sum((o.LatitudeR - o.LatitudeL)*(o.LongtitudeU - o.LongtitudeD)) from Object o
 					 where o.FkLandID in (select ID from Land l
 										  where l.FkOwnerID = @id))
 		insert into @table (ID, name, area) values (@id, @surname + ' ' + @name, @area)
@@ -199,42 +200,38 @@ go
 
 
 --------------------------------------------------------------------------
---(11) Відображення історії купівлі-продажу ділянки
-
---------------------------------------------------------------------------
---(12) Відображення усіх ділянок із каналізацією
+--(11) Відображення усіх ділянок із каналізацією
 select la.id, lo.Address
 from Land la
 join Location lo on lo.ID = la.FkLocationID
-join Utility u on FkLandID = la.id
+join Utility u on u.ID = la.FkUtilityID
 where Sanitation = 1
 go
 
 
---All utillity for all lands
-select la.id, lo.Address, u.*
-from Land la
-join Location lo on lo.ID = la.FkLocationID
-join Utility u on FkLandID = la.id
-order by Sanitation desc, la.ID
+--------------------------------------------------------------------------
+--(12) Відображення історії купівлі-продажу ділянки
+create function HistoryByLandID (@landID int)
+returns table 
+as
+	return (select * from Act
+			where FkLandID = @landID)
 go
+
+select * from HistoryByLandID(3) order by Date
+go
+
+select * from Act order by FkLandID
+go
+
 
 --------------------------------------------------------------------------
 --(13) Відображення ділянок, де є опалення
 select la.id, lo.Address
 from Land la
 join Location lo on lo.ID = la.FkLocationID
-join Utility u on FkLandID = la.id
+join Utility u on u.ID = la.FkUtilityID
 where Heating = 1
-go
-
-
---All utillity for all lands
-select la.id, lo.Address, u.*
-from Land la
-join Location lo on lo.ID = la.FkLocationID
-join Utility u on FkLandID = la.id
-order by Heating desc, la.ID
 go
 
 
@@ -243,45 +240,93 @@ go
 select la.id as LandID, n.Surname + ' ' + n.Name as Owner
 from Land la
 join Natural n on n.ID = la.FkOwnerID 
-join Utility u on FkLandID = la.id
+join Utility u on u.ID = la.FkUtilityID
 where Electricity = 1
 go
 
---All utillity for all lands
-select la.id, lo.Address, u.Electricity, n.Surname as Owner
-from Land la
-join Location lo on lo.ID = la.FkLocationID
-join Natural n on n.ID = la.FkOwnerID 
-join Utility u on FkLandID = la.id
-order by Electricity desc, la.ID
-go
 
 --------------------------------------------------------------------------
 --(15) Запит на відображення кількості ділянок із газом
 select 'Full number of lands with electricity is ' + 
 	   cast((select count(*) 
 	   from Land l  
-	   join Utility on fkLandID = l.ID
+	   join Utility u on u.ID = l.FkUtilityID
 	   where Gas = 1) as varchar) as GasQuantity
 go
 
---Gas bool for all Lands
+--CHECK
 select l.ID, Gas
 from land l
-join Utility on fkLandID = l.ID
-order by gas desc, l.id
+join Utility u on u.ID = l.FkUtilityID
+order by gas desc
+go
+
 
 --------------------------------------------------------------------------
---(16) Запит на відображання ділянок у яких був лише 1 власник
+--(16) Запит на відображання ділянок у яких було X власників
+create view LandsByOwners 
+	as select FkLandID as LandID,
+			  FkBuyerID as OwnerID,
+			  Surname as Owner, 
+			  count(FkLandID) over(partition by FkLandID) as OwnersQuantity 
+	from Act a
+	join Natural n on n.ID = FkBuyerID
+go
+
+create proc LandsByOwnersQuantity @owners int
+as begin
+	select LandID, OwnerID, Owner from LandsByOwners
+	where OwnersQuantity = @owners
+end
+go
+
+exec LandsByOwnersQuantity 3
+go
+
 
 --------------------------------------------------------------------------
 -- (17) Запит на відображення актів затвердженими реєстратором
+select r.ID, r.Surname + ' ' + r.Name as Registrar, a.ID as ActID, a.FkLandID as LandID, lo.Address
+from Registrar r
+join Act a on a.FkRegistrarID = r.ID
+join Location lo on lo.ID = (select FkLocationID from Land la 
+							 where a.FkLandID = la.ID)
+order by r.ID, a.ID
+go
+
 
 --------------------------------------------------------------------------
 --(18) Запит на відображення суми вартості ділянок фізичних осіб
+select la.FkOwnerID as OwnerID,
+	   n.Surname as Owner,
+	   la.ID as LandID, 
+	   cast(sum(lo.Tax + u.Tax + r.Tax) as varchar) + ' mln' as TotalTax
+from Land la
+join Natural n on n.ID = la.FkOwnerID
+join Location lo on lo.ID = la.FkLocationID
+join UsageType u on u.ID = la.FkUsageTypeID
+join Object o on o.FkLandID = la.ID
+join Resource r on r.FkObjectID = o.ID
+group by FkOwnerID, n.Surname, la.ID
+order by FkOwnerID
+go
+
 
 --------------------------------------------------------------------------
 --(19) Запит на відображення номеру телефону продавця та його ділянки
+select a.FkSellerID as SellerID, n.Surname as Seller, n.Phone, lo.Address
+from Act a
+join Natural n on n.ID = a.FkSellerID
+join Location lo on lo.ID = (select la.FkLocationID from Land la where la.ID = a.FkLandID)
+order by FkLandID, Date
+go
 
 --------------------------------------------------------------------------
 --(20) Запит на відображення кількості актів проведених із ділянкою
+select la.ID, lo.Address, count(FkLandID) as ActsQuantity 
+from Land la
+join Location lo on lo.ID = la.FkLocationID
+left join Act a on a.FkLandID = la.ID
+group by la.ID, lo.Address
+order by ActsQuantity
+go
